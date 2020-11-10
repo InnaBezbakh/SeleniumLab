@@ -206,8 +206,6 @@ public class InputForm {
         // By datePickersBy = By.xpath("//a[text()='Date pickers']");
         // By waitBootstrapDatePickerBy = By.xpath("//li[@class='tree-branch']//a[text()='Bootstrap Date Picker']");
         // By chooseDateBy = By.xpath("//div[@id='sandbox-container1']//span[@class='input-group-addon']");
-        //
-
     @Test
     public void test_9(){
         String textIsVisible = "4 Bootstrap 3 Emily John in progress";
@@ -219,8 +217,6 @@ public class InputForm {
 
         String actRes9 = driver.findElement(By.xpath("//table[@id='task-table']")).getText();
         Assertions.assertThat(actRes9).contains(textIsVisible);
-
-
     }
 
     // By optionTableBy = By.xpath("//li[@class='tree-branch']//a[text()='Table']");
