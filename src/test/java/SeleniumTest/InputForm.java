@@ -31,8 +31,8 @@ public class InputForm {
 
     //tst_3
     By waitCheckBoxDemoBy = By.xpath("//li[@class='tree-branch']//a[text()='Checkbox Demo']");
-    By checkBoxOption1By = By.xpath("//label[text()='Option 1']");
-    By checkBoxOption3By = By.xpath("//label[text()='Option 3']");
+    By checkBoxOption1By = By.xpath("//label[text()='Option 1']//input");
+    By checkBoxOption3By = By.xpath("//label[text()='Option 3']//input");
 
     //test_4
     By waitRadiobuttonDemoBy = By.xpath("//li[@class='tree-branch']//a[text()='Radio Buttons Demo']");
@@ -60,6 +60,18 @@ public class InputForm {
     By datePickersBy = By.xpath("//a[text()='Date pickers']");
     By waitBootstrapDatePickerBy = By.xpath("//li[@class='tree-branch']//a[text()='Bootstrap Date Picker']");
     By chooseDateBy = By.xpath("//div[@id='sandbox-container1']//span[@class='input-group-addon']");
+
+    //test_9
+    By optionTableBy = By.xpath("//li[@class='tree-branch']//a[text()='Table']");
+    By optionTableDataSearchBy = By.xpath("//li[@class='tree-branch']//a[text()='Table Data Search']");
+    By taskTableFilterBy = By.xpath("//input[@id='task-table-filter']");
+    By taskTableBy = By.xpath("//table[@id='task-table']");
+
+
+    //test_10
+    By optionTable1By = By.xpath("//li[@class='tree-branch']//a[text()='Table']");
+    By optionTableFilterBy = By.xpath("//li[@class='tree-branch']//a[text()='Table Filter ']");
+    By buttonOrangeBy = By.xpath("//button[text()='Orange']");
 
 
 
@@ -209,33 +221,48 @@ public class InputForm {
     @Test
     public void test_9(){
         String textIsVisible = "4 Bootstrap 3 Emily John in progress";
-        WebElement optionTable = driver.findElement(By.xpath("//li[@class='tree-branch']//a[text()='Table']"));
+        WebElement optionTable = driver.findElement(optionTableBy);
         optionTable.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(" //li[@class='tree-branch']//a[text()='Table Data Search']"))).click();
-        WebElement tabTableFilter = driver.findElement(By.xpath("//input[@id='task-table-filter']"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(optionTableDataSearchBy)).click();
+        WebElement tabTableFilter = driver.findElement(taskTableFilterBy);
         tabTableFilter.sendKeys("Emily John");
 
-        String actRes9 = driver.findElement(By.xpath("//table[@id='task-table']")).getText();
+        String actRes9 = driver.findElement(taskTableBy).getText();
         Assertions.assertThat(actRes9).contains(textIsVisible);
     }
 
-    // By optionTableBy = By.xpath("//li[@class='tree-branch']//a[text()='Table']");
-    //
-
-
+    //By optionTable1By = By.xpath("//li[@class='tree-branch']//a[text()='Table']");
+    //By optionTableFilterBy = By.xpath("//li[@class='tree-branch']//a[text()='Table Filter ']");
+    //By buttonOrangeBy = By.xpath("//button[text()='Orange']");
 
     @Test
     public void test_10(){
-
+        String isSmileColorOrange = "rgb(265, 165, 0)";
+        WebElement optionTable1 = driver.findElement(optionTable1By);
+        optionTable1.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(optionTableFilterBy)).click();
+        WebElement buttonOrange = driver.findElement(buttonOrangeBy);
+        buttonOrange.click();
+        String actRes10 = driver.findElement(By.xpath("//div[@class='media']//i[@style='color:orange;']")).getCssValue("color:");
+        //String actRes10 = driver.findElement(By.xpath("//div[@class='media']//i[@style='color:orange;']")).getAttribute("outerHTML");//correct option
+        Assertions.assertThat(actRes10).isEqualTo(isSmileColorOrange);
     }
+    // ("//div[@class='media']//i[@style='color:orange;']")
+    // ("//div[@class='media']//a[@class='pull-left']//i[@class='media-photo fa fa-smile-o fa-3x']")
+    //#f0ad4e
 
+    //.table-filter .media .title .pendiente {
+    //	color: #f0ad4e;
+    //}
 
+    //element.style {
+    //    color: orange;
+    //}
 
+    //outerHTML: "<i class="media-photo fa fa-smile-o fa-3x" style="color:orange;" aria-hidden="true"></i>"
     @After
     public void afterEachTest(){
         driver.quit();
     }
-
-
 
 }
