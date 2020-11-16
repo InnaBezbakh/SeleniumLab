@@ -235,18 +235,18 @@ public class InputForm {
     //By optionTableFilterBy = By.xpath("//li[@class='tree-branch']//a[text()='Table Filter ']");
     //By buttonOrangeBy = By.xpath("//button[text()='Orange']");
 
-    @Test
-    public void test_10(){
-        String isSmileColorOrange = "rgb(265, 165, 0)";
-        WebElement optionTable1 = driver.findElement(optionTable1By);
-        optionTable1.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(optionTableFilterBy)).click();
-        WebElement buttonOrange = driver.findElement(buttonOrangeBy);
-        buttonOrange.click();
-        String actRes10 = driver.findElement(By.xpath("//div[@class='media']//i[@style='color:orange;']")).getCssValue("color:");
-        //String actRes10 = driver.findElement(By.xpath("//div[@class='media']//i[@style='color:orange;']")).getAttribute("outerHTML");//correct option
-        Assertions.assertThat(actRes10).isEqualTo(isSmileColorOrange);
-    }
+//    @Test
+//    public void test_10(){
+//        String isSmileColorOrange = "rgb(265, 165, 0)";
+//        WebElement optionTable1 = driver.findElement(optionTable1By);
+//        optionTable1.click();
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(optionTableFilterBy)).click();
+//        WebElement buttonOrange = driver.findElement(buttonOrangeBy);
+//        buttonOrange.click();
+//        String actRes10 = driver.findElement(By.xpath("//div[@class='media']//i[@style='color:orange;']")).getCssValue("color:");
+//        //String actRes10 = driver.findElement(By.xpath("//div[@class='media']//i[@style='color:orange;']")).getAttribute("outerHTML");//correct option
+//        Assertions.assertThat(actRes10).isEqualTo(isSmileColorOrange);
+//    }
     // ("//div[@class='media']//i[@style='color:orange;']")
     // ("//div[@class='media']//a[@class='pull-left']//i[@class='media-photo fa fa-smile-o fa-3x']")
     //#f0ad4e
